@@ -32,7 +32,7 @@ st.markdown("""
 def load_data():
     """Load the CEO dataset"""
     try:
-        df = pd.read_csv('clean_data.csv')
+        df = pd.read_csv(r"Output Data/clean_data_with_stock_info.csv")
         # Clean column names
         df.columns = df.columns.str.strip()
         return df
@@ -45,7 +45,7 @@ def get_ceo_image(ceo_name, year):
     Find and load CEO image from matched_pictures folder
     Returns PIL Image object or None if not found
     """
-    base_dir = "matched_pictures"
+    base_dir = "Output Data/matched_pictures"
     
     # Build the path: matched_pictures/CEO_Name/Year/
     folder_path = os.path.join(base_dir, ceo_name, str(year))
@@ -77,7 +77,7 @@ data['age_group'] = pd.cut(data['scenario.Age'],
                             labels=['<35', '35-50', '>50'])
 
 # Title and description
-st.title("CEO Personality Analysis Dashboard")
+st.title("FaceValue Analysis Dashboard")
 st.markdown("### AI-Generated Personality Inference: Predictive Power, Demographic Trends, and Bias")
 st.markdown("---")
 
@@ -636,7 +636,7 @@ elif page == "Bias Explorer":
     st.plotly_chart(fig, use_container_width=True)
     
     # Statistical Summary Table
-    st.subheader("📋 Statistical Summary by Group")
+    st.subheader("Statistical Summary by Group")
     
     summary_table = agg_data.round(2)
     st.dataframe(summary_table, use_container_width=True)
