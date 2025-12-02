@@ -458,7 +458,7 @@ elif page == "CEO Lookup":
         if ceo_image:
             st.image(ceo_image, caption=f"{selected_ceo} ({selected_year})", use_container_width=True)
         else:
-            st.info("📷 No image available for this CEO-Year combination")
+            st.info("No image available for this CEO-Year combination")
         
         st.markdown("---")
         st.subheader("Demographic Profile")
@@ -548,9 +548,9 @@ elif page == "CEO Lookup":
         # Returns over time
         fig.add_trace(
             go.Scatter(x=ceo_timeline['scenario.Year'], 
-                      y=ceo_timeline['Tenure_Cum_Ret_Overall'],
+                      y=ceo_timeline['Year_Cum_Ret_Overall'],
                       mode='lines+markers',
-                      name='Tenure Cumulative Return',
+                      name='Year Cumulative Return',
                       line=dict(color='#3b82f6', width=3)),
             row=1, col=1
         )
